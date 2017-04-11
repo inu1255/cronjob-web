@@ -1,0 +1,668 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "接口文档",
+        "description": "点击右上角`Authorize`切换token\n"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data",
+        "text/plain"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "xauth": {
+            "type": "apiKey",
+            "name": "access_token",
+            "in": "query"
+        }
+    },
+    "security": [
+        {
+            "xauth": []
+        }
+    ],
+    "paths": {
+        "/record/save": {
+            "post": {
+                "summary": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "record"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Record"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/record/search": {
+            "post": {
+                "summary": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "record"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.SearchPage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/service/save": {
+            "post": {
+                "summary": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "service"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Service"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Service"
+                        }
+                    }
+                }
+            }
+        },
+        "/service/search": {
+            "post": {
+                "summary": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "service"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.SearchPage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Service"
+                        }
+                    }
+                }
+            }
+        },
+        "/service/start/{title}": {
+            "post": {
+                "tags": [
+                    "service"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "title",
+                        "description": "service.title",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/#/definitions/.map.0"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/change/password": {
+            "post": {
+                "summary": "修改密码",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.RegistorBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.LoginData"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/delete/ids": {
+            "post": {
+                "summary": "批量删除",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "items": {
+                                "type": "integer"
+                            },
+                            "type": "array"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/delete/{id}": {
+            "get": {
+                "summary": "删除",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/info/{id}": {
+            "get": {
+                "summary": "查看详情",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "get": {
+                "summary": "登录",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "telphone",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.LoginData"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "get": {
+                "summary": "注销",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/mine/info": {
+            "get": {
+                "summary": "我的信息",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/registor": {
+            "post": {
+                "summary": "注册",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.RegistorBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.LoginData"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/save": {
+            "post": {
+                "summary": "添加/修改",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/save/all": {
+            "post": {
+                "summary": "批量添加",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                            },
+                            "type": "array"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                            },
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/search": {
+            "post": {
+                "summary": "搜索，除了管理员，只能查找owner_id为自己的",
+                "description": "\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.gev2.models.SearchPage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/verify/send/{title}": {
+            "get": {
+                "summary": "发送验证码",
+                "description": "title:要发送的手机号或邮箱\u003cbr/\u003e\n\u003cb\u003e返回数据结构不确定，以下仅作参考\u003c/b\u003e",
+                "tags": [
+                    "verify"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "title",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/github.com.inu1255.cronjob.service.Verify"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "#/definitions/.map.0": {
+            "type": "object"
+        },
+        ".map": {
+            "type": "object"
+        },
+        "github.com.inu1255.cronjob.service.Record": {
+            "properties": {
+                "body": {
+                    "description": "返回值",
+                    "items": {},
+                    "type": "array"
+                },
+                "cookies": {
+                    "$ref": "#/definitions/#/definitions/.map.0",
+                    "description": "cookie"
+                },
+                "create_at": {
+                    "default": "0001-01-01T00:00:00Z",
+                    "description": "",
+                    "type": "string"
+                },
+                "params": {
+                    "$ref": "#/definitions/#/definitions/.map.0",
+                    "description": "用户填写的参数"
+                },
+                "title": {
+                    "description": "名字",
+                    "type": "string"
+                },
+                "user_id": {
+                    "description": "用户id",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.cronjob.service.Service": {
+            "properties": {
+                "header": {
+                    "$ref": "#/definitions/#/definitions/.map.0",
+                    "description": "头部"
+                },
+                "method": {
+                    "description": "GET/POST",
+                    "type": "string"
+                },
+                "params": {
+                    "description": "参数",
+                    "type": "string"
+                },
+                "parent": {
+                    "description": "依赖的service的id",
+                    "type": "string"
+                },
+                "script": {
+                    "description": "TODO: 用于生成其它参数的脚本",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "名字",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 0:辅助 1:项目",
+                    "type": "integer"
+                },
+                "url": {
+                    "description": "链接",
+                    "type": "string"
+                },
+                "user_param": {
+                    "$ref": "#/definitions/#/definitions/.map.0",
+                    "description": "用户参数"
+                },
+                "valid_regex": {
+                    "description": "判断是否成功的正则表达式",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.cronjob.service.User": {
+            "properties": {
+                "create_at": {
+                    "default": "0001-01-01T00:00:00Z",
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "nickname": {
+                    "description": "用户昵称",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "用户角色",
+                    "type": "string"
+                },
+                "telphone": {
+                    "description": "电话号码",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.cronjob.service.Verify": {
+            "properties": {
+                "code": {
+                    "description": "验证码",
+                    "type": "string"
+                },
+                "create_at": {
+                    "default": "0001-01-01T00:00:00Z",
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "rest": {
+                    "description": "剩余验证次数",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "手机号/邮箱等",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.gev2.models.AccessToken": {
+            "properties": {
+                "create_at": {
+                    "default": "0001-01-01T00:00:00Z",
+                    "description": "",
+                    "type": "string"
+                },
+                "expired_at": {
+                    "default": "0001-01-01T00:00:00Z",
+                    "description": "过期时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "token": {
+                    "description": "身份密钥",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.gev2.models.LoginData": {
+            "properties": {
+                "access": {
+                    "$ref": "#/definitions/github.com.inu1255.gev2.models.AccessToken",
+                    "description": ""
+                },
+                "user": {
+                    "description": ""
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.gev2.models.RegistorBody": {
+            "properties": {
+                "code": {
+                    "description": "",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "",
+                    "type": "string"
+                },
+                "telphone": {
+                    "description": "",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "github.com.inu1255.gev2.models.SearchPage": {
+            "properties": {
+                "order_by": {
+                    "description": "排序规则:-id",
+                    "type": "string"
+                },
+                "page": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "size": {
+                    "description": "",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "user",
+            "description": "用户"
+        },
+        {
+            "name": "service",
+            "description": "服务"
+        },
+        {
+            "name": "record",
+            "description": "记录"
+        },
+        {
+            "name": "verify",
+            "description": "验证码"
+        }
+    ]
+}
